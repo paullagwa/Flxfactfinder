@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLX Growth Fund - Financial Fact Finder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .header {
+        background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+        border: 2px solid #9333ea;
+        border-radius: 12px;
+        padding: 40px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(147, 51, 234, 0.3);
+    }
+
+    .logo {
+        font-size: 3.5rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #9333ea 0%, #ec4899 50%, #fbbf24 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+    }
+
+    .tagline-main {
+        font-size: 1.8rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #a855f7 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 8px;
+    }
+
+    .tagline-sub {
+        font-size: 0.95rem;
+        margin-top: 10px;
+    }
+
+    .tagline-sub span:nth-child(1) { color: #a855f7; }
+    .tagline-sub span:nth-child(2) { color: #6b7280; }
+    .tagline-sub span:nth-child(3) { color: #ec4899; }
+    .tagline-sub span:nth-child(4) { color: #6b7280; }
+    .tagline-sub span:nth-child(5) { color: #fbbf24; }
+
+    .header-divider {
+        border-top: 1px solid #9333ea;
+        margin: 25px 0;
+    }
+
+    .header-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ffffff;
+        margin-bottom: 8px;
+    }
+
+    .header-subtitle {
+        color: #9ca3af;
+    }
+
+    .section {
+        background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+        border: 2px solid #a855f7;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(168, 85, 247, 0.2);
+    }
+
+    .section-header {
+        background: linear-gradient(90deg, #9333ea 0%, #ec4899 100%);
+        padding: 18px 24px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .section-header:hover {
+        background: linear-gradient(90deg, #7e22ce 0%, #db2777 100%);
+    }
+
+    .section-header h2 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .section-content {
+        padding: 30px;
+        display: none;
+    }
+
+    .section-content.active {
+        display: block;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+        .form-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        background: linear-gradient(90deg, #a855f7 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 12px;
+        background-color: #1f2937;
+        border: 2px solid #9333ea;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #ec4899;
+        box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
+    }
+
+    input::placeholder, textarea::placeholder {
+        color: #6b7280;
+    }
+
+    select {
+        cursor: pointer;
+    }
+
+    select option {
+        background-color: #1f2937;
+        color: #ffffff;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .chevron {
+        transition: transform 0.3s ease;
+        color: #ffffff;
+    }
+
+    .chevron.rotated {
+        transform: rotate(180deg);
+    }
+
+    .download-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: linear-gradient(90deg, #9333ea 0%, #ec4899 100%);
+        color: #ffffff;
+        padding: 18px 40px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 30px auto;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 25px rgba(147, 51, 234, 0.4);
+    }
+
+    .download-btn:hover {
+        background: linear-gradient(90deg, #7e22ce 0%, #db2777 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(147, 51, 234, 0.6);
+    }
+
+    .download-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">FLX</div>
+            <div class="tagline-main">GROWTH FUND</div>
+            <div class="tagline-sub">
+                <span>INVEST</span><span> - </span><span>REWARD</span><span> - </span><span>REPEAT</span>
+            </div>
+            <div class="header-divider"></div>
+            <div class="header-title">Financial Fact Finder</div>
+            <div class="header-subtitle">Australian Financial Planning Compliance</div>
+        </div>
+
+```
+    <form id="factFinderForm">
+        <!-- Personal Details -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('personal')">
+                <h2>Personal Details</h2>
+                <span class="chevron" id="chevron-personal">â¼</span>
+            </div>
+            <div class="section-content" id="content-personal">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob">
+                    </div>
+                    <div class="form-group">
+                        <label for="maritalStatus">Marital Status</label>
+                        <select id="maritalStatus" name="maritalStatus">
+                            <option value="">Select...</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="De Facto">De Facto</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dependents">Number of Dependents</label>
+                        <input type="number" id="dependents" name="dependents" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="residencyStatus">Residency Status</label>
+                        <select id="residencyStatus" name="residencyStatus">
+                            <option value="">Select...</option>
+                            <option value="Australian Citizen">Australian Citizen</option>
+                            <option value="Permanent Resident">Permanent Resident</option>
+                            <option value="Temporary Resident">Temporary Resident</option>
+                            <option value="Non-Resident">Non-Resident</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partner Details -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('partner')">
+                <h2>Partner Details</h2>
+                <span class="chevron" id="chevron-partner">â¼</span>
+            </div>
+            <div class="section-content" id="content-partner">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="partnerFirstName">Partner First Name</label>
+                        <input type="text" id="partnerFirstName" name="partnerFirstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="partnerLastName">Partner Last Name</label>
+                        <input type="text" id="partnerLastName" name="partnerLastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="partnerDob">Partner Date of Birth</label>
+                        <input type="date" id="partnerDob" name="partnerDob">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('contact')">
+                <h2>Contact Information</h2>
+                <span class="chevron" id="chevron-contact">â¼</span>
+            </div>
+            <div class="section-content" id="content-contact">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="address">Residential Address</label>
+                    <input type="text" id="address" name="address">
+                </div>
+            </div>
+        </div>
+
+        <!-- Employment & Income -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('employment')">
+                <h2>Employment & Income</h2>
+                <span class="chevron" id="chevron-employment">â¼</span>
+            </div>
+            <div class="section-content" id="content-employment">
+                <div class="form-group">
+                    <label for="employmentStatus">Employment Status</label>
+                    <select id="employmentStatus" name="employmentStatus">
+                        <option value="">Select...</option>
+                        <option value="Full-Time Employee">Full-Time Employee</option>
+                        <option value="Part-Time Employee">Part-Time Employee</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Self-Employed">Self-Employed</option>
+                        <option value="Retired">Retired</option>
+                        <option value="Unemployed">Unemployed</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation">
+                </div>
+                <div class="form-group">
+                    <label for="employer">Employer</label>
+                    <input type="text" id="employer" name="employer">
+                </div>
+                <div class="form-group">
+                    <label for="annualIncome">Annual Income (before tax)</label>
+                    <input type="number" id="annualIncome" name="annualIncome" min="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- Assets -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('assets')">
+                <h2>Assets</h2>
+                <span class="chevron" id="chevron-assets">â¼</span>
+            </div>
+            <div class="section-content" id="content-assets">
+                <div class="form-group">
+                    <label for="primaryHome">Primary Home Value ($)</label>
+                    <input type="number" id="primaryHome" name="primaryHome" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="investmentProperty">Investment Property Value ($)</label>
+                    <input type="number" id="investmentProperty" name="investmentProperty" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="shares">Shares/Managed Funds ($)</label>
+                    <input type="number" id="shares" name="shares" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="superannuation">Superannuation Balance ($)</label>
+                    <input type="number" id="superannuation" name="superannuation" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="bankAccounts">Bank Accounts/Savings ($)</label>
+                    <input type="number" id="bankAccounts" name="bankAccounts" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="vehicles">Vehicles ($)</label>
+                    <input type="number" id="vehicles" name="vehicles" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="otherAssets">Other Assets ($)</label>
+                    <input type="number" id="otherAssets" name="otherAssets" min="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- Liabilities -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('liabilities')">
+                <h2>Liabilities</h2>
+                <span class="chevron" id="chevron-liabilities">â¼</span>
+            </div>
+            <div class="section-content" id="content-liabilities">
+                <div class="form-group">
+                    <label for="mortgage">Home Mortgage ($)</label>
+                    <input type="number" id="mortgage" name="mortgage" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="investmentLoan">Investment Property Loan ($)</label>
+                    <input type="number" id="investmentLoan" name="investmentLoan" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="personalLoan">Personal Loans ($)</label>
+                    <input type="number" id="personalLoan" name="personalLoan" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="creditCards">Credit Cards ($)</label>
+                    <input type="number" id="creditCards" name="creditCards" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="hecs">HECS/HELP Debt ($)</label>
+                    <input type="number" id="hecs" name="hecs" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="otherDebts">Other Debts ($)</label>
+                    <input type="number" id="otherDebts" name="otherDebts" min="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- Insurance -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('insurance')">
+                <h2>Insurance</h2>
+                <span class="chevron" id="chevron-insurance">â¼</span>
+            </div>
+            <div class="section-content" id="content-insurance">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="lifeInsurance">Life Insurance Sum Insured ($)</label>
+                        <input type="number" id="lifeInsurance" name="lifeInsurance" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="lifeInsuranceProvider">Life Insurance Provider</label>
+                        <input type="text" id="lifeInsuranceProvider" name="lifeInsuranceProvider">
+                    </div>
+                    <div class="form-group">
+                        <label for="tpdInsurance">TPD Insurance Sum Insured ($)</label>
+                        <input type="number" id="tpdInsurance" name="tpdInsurance" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="tpdInsuranceProvider">TPD Insurance Provider</label>
+                        <input type="text" id="tpdInsuranceProvider" name="tpdInsuranceProvider">
+                    </div>
+                    <div class="form-group">
+                        <label for="incomeProtection">Income Protection Monthly Benefit ($)</label>
+                        <input type="number" id="incomeProtection" name="incomeProtection" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="incomeProtectionProvider">Income Protection Provider</label>
+                        <input type="text" id="incomeProtectionProvider" name="incomeProtectionProvider">
+                    </div>
+                    <div class="form-group">
+                        <label for="traumaInsurance">Trauma Insurance Sum Insured ($)</label>
+                        <input type="number" id="traumaInsurance" name="traumaInsurance" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="traumaInsuranceProvider">Trauma Insurance Provider</label>
+                        <input type="text" id="traumaInsuranceProvider" name="traumaInsuranceProvider">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Goals & Risk -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('goals')">
+                <h2>Financial Goals & Risk</h2>
+                <span class="chevron" id="chevron-goals">â¼</span>
+            </div>
+            <div class="section-content" id="content-goals">
+                <div class="form-group">
+                    <label for="retirementAge">Desired Retirement Age</label>
+                    <input type="number" id="retirementAge" name="retirementAge" min="50" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="riskTolerance">Risk Tolerance</label>
+                    <select id="riskTolerance" name="riskTolerance">
+                        <option value="">Select...</option>
+                        <option value="Very Conservative">Very Conservative</option>
+                        <option value="Conservative">Conservative</option>
+                        <option value="Balanced">Balanced</option>
+                        <option value="Growth">Growth</option>
+                        <option value="High Growth">High Growth</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label for="shortTermGoals">Short-Term Goals (0-3 years)</label>
+                    <textarea id="shortTermGoals" name="shortTermGoals" placeholder="e.g., Build emergency fund, pay off credit cards, save for holiday, buy a car..."></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="mediumTermGoals">Medium-Term Goals (3-10 years)</label>
+                    <textarea id="mediumTermGoals" name="mediumTermGoals" placeholder="e.g., Save for home deposit, renovate property, children's education, investment property..."></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="longTermGoals">Long-Term Goals (10+ years)</label>
+                    <textarea id="longTermGoals" name="longTermGoals" placeholder="e.g., Comfortable retirement, financial independence, wealth transfer, legacy planning..."></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <button class="download-btn" onclick="downloadSummary()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download Summary
+    </button>
+</div>
+
+<script>
+    function toggleSection(sectionId) {
+        const content = document.getElementById('content-' + sectionId);
+        const chevron = document.getElementById('chevron-' + sectionId);
+        
+        content.classList.toggle('active');
+        chevron.classList.toggle('rotated');
+    }
+
+    function downloadSummary() {
+        const form = document.getElementById('factFinderForm');
+        const formData = new FormData(form);
+        let summary = 'FLX GROWTH FUND - FINANCIAL FACT FINDER\n';
+        summary += '='.repeat(50) + '\n\n';
+
+        const sections = {
+            'PERSONAL DETAILS': ['firstName', 'lastName', 'dob', 'maritalStatus', 'dependents', 'residencyStatus'],
+            'PARTNER DETAILS': ['partnerFirstName', 'partnerLastName', 'partnerDob'],
+            'CONTACT INFORMATION': ['email', 'phone', 'address'],
+            'EMPLOYMENT & INCOME': ['employmentStatus', 'occupation', 'employer', 'annualIncome'],
+            'ASSETS': ['primaryHome', 'investmentProperty', 'shares', 'superannuation', 'bankAccounts', 'vehicles', 'otherAssets'],
+            'LIABILITIES': ['mortgage', 'investmentLoan', 'personalLoan', 'creditCards', 'hecs', 'otherDebts'],
+            'INSURANCE': ['lifeInsurance', 'lifeInsuranceProvider', 'tpdInsurance', 'tpdInsuranceProvider', 'incomeProtection', 'incomeProtectionProvider', 'traumaInsurance', 'traumaInsuranceProvider'],
+            'FINANCIAL GOALS & RISK': ['retirementAge', 'riskTolerance', 'shortTermGoals', 'mediumTermGoals', 'longTermGoals']
+        };
+
+        for (const [sectionName, fields] of Object.entries(sections)) {
+            let sectionHasData = false;
+            let sectionContent = sectionName + '\n' + '-'.repeat(sectionName.length) + '\n';
+            
+            for (const field of fields) {
+                const value = formData.get(field);
+                if (value && value.trim() !== '') {
+                    sectionHasData = true;
+                    const label = document.querySelector(`label[for="${field}"]`).textContent;
+                    sectionContent += `${label}: ${value}\n`;
+                }
+            }
+            
+            if (sectionHasData) {
+                summary += sectionContent + '\n';
+            }
+        }
+
+        const blob = new Blob([summary], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'FLX-Financial-Fact-Finder.txt';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
+```
+
+</body>
+</html>
